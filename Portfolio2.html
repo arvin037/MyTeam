@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerard Arvie Frias</title>
+ 
+  <style>
+    /* ==== Global Styles ==== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    body {
+  font-family: "Segoe UI", sans-serif;
+  background: url("res\\background.jpg") no-repeat center center fixed;
+  background-size: cover;
+  color: #2c3e50;
+  line-height: 1.6;
+}
+    h1, h2, h3 {
+      font-weight: 700;
+      color: #2c3e50;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ==== Navbar ==== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(44, 62, 80, 0.95);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      z-index: 1000;
+      transition: background 0.3s;
+    }
+    nav .nav-center {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex: 1;
+    }
+    nav a {
+      color: #ecf0f1;
+      font-weight: bold;
+      position: relative;
+      text-decoration: none;
+    }
+    nav a::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: #1abc9c;
+      transition: 0.3s;
+    }
+    nav a:hover::after {
+      width: 75%;
+    }
+    .back-btn {
+      padding: 0.6rem 1.2rem;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .back-btn:hover {
+      color: #0f3460;
+      transform: scale(1.05);
+    }
+
+    /* ==== Hero Section ==== */
+    header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      color: rgba(44, 62, 80, 0.95);
+    }
+    header img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 5px solid rgba(44, 62, 80, 0.95);
+      margin-bottom: 1.5rem;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+      object-fit: cover;
+    }
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+      color: rgba(44, 62, 80, 0.95);
+    }
+    header p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      color: rgba(44, 62, 80, 0.95);
+    }
+    .tagline {
+      color: rgba(44, 62, 80, 0.95);
+      font-size: 1.2rem;
+    }
+
+    /* ==== Section Styling ==== */
+    section {
+      padding:4rem 10%;
+    }
+    section h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      color: #16a085;
+    }
+
+    /* ==== About ==== */
+    .about p {
+      max-width: 700px;
+      margin: auto;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+
+    /* ==== Education ==== */
+    .education {
+      max-width: 700px;
+      margin: auto;
+    }
+    .education-item {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-left: 8px solid rgba(44, 62, 80, 0.95);
+      border-right: 8px solid rgba(44, 62, 80, 0.95);
+      border-radius: 12px;
+      text-align: left;
+    }
+    .education-degree {
+      font-weight: 700;
+      color: rgba(44, 62, 80, 0.95);
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .education-school {
+      color: rgba(44, 62, 80, 0.95);
+      margin-bottom: 0.5rem;
+    }
+    .education-date {
+      font-size: 0.9rem;
+      color: rgba(44, 62, 80, 0.95);
+      font-style: italic;
+    }
+    .education-level {
+      font-size: 0.85rem;
+      color: rgba(44, 62, 80, 0.95);
+      font-weight: 600;
+      margin-top: 0.5rem;
+    }
+
+    /* ==== Employment ==== */
+    .employment {
+      max-width: 700px;
+      margin: auto;
+    }
+    .employment-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-left: 8px solid rgba(44, 62, 80, 0.95);
+      border-right: 8px solid rgba(44, 62, 80, 0.95);
+      border-radius: 12px;
+    }
+    .employment-details {
+      flex: 1;
+    }
+    .employment-job {
+      font-weight: 700;
+      color: rgba(44, 62, 80, 0.95);
+      font-size: 1.05rem;
+      margin-bottom: 0.3rem;
+    }
+    .employment-company {
+      color: rgba(44, 62, 80, 0.95);
+      margin-bottom: 0.5rem;
+    }
+    .employment-date {
+      font-size: 0.9rem;
+      color: rgba(44, 62, 80, 0.95);
+      font-style: italic;
+    }
+    .employment-location {
+      text-align: right;
+      font-size: 0.95rem;
+      color: rgba(44, 62, 80, 0.95);
+      margin-top: 0.5rem;
+    }
+
+    /* ==== Skills ==== */
+    .skills-container {
+      max-width: 700px;
+      margin: auto;
+    }
+    .skill {
+      margin-bottom: 1.5rem;
+    }
+    .skill span {
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+    .bar {
+      width: 100%;
+      background: #ecf0f1;
+      border-radius: 20px;
+      overflow: hidden;
+      height: 14px;
+    }
+    .progress {
+      height: 100%;
+      border-radius: 20px;
+    }
+    .progress.html { width: 90%; background: #e67e22; }
+    .progress.css { width: 90%; background: #2980b9; }
+    .progress.js { width: 90%; background: #f1c40f; }
+    .progress.react { width: 50%; background: #16a085; }
+    .progress.design { width: 60%; background: #8e44ad; }
+
+    /* ==== Contact ==== */
+    .contact p {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .contact a {
+      color: #16a085;
+      font-weight: bold;
+    }
+
+    /* ==== Footer ==== */
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #2c3e50;
+      color: white;
+      font-size: 0.9rem;
+    }
+
+    /* ==== Scroll Animation ==== */
+    .hidden {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-in-out;
+    }
+    .show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.2rem; }
+      section { padding: 3rem 5%; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <a href="MyTeam.html" class="back-btn">← Back</a>
+    <div class="nav-center">
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#employment">Employment</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header>
+    <div class="hero-content">
+      <img src="res/Member2.jpg" alt="My Photo">
+      <h1>Gerard Arvie Frias</h1>
+      <p class="tagline">IT Student | Developer</p>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section id="about" class="about hidden">
+    <h2>About Me</h2>
+    <p>
+      Hi, I'm <b>Gerard Arvie Frias</b> a motivated BSIT student with hands-on experience as a crew member at McDonald’s, where I developed strong teamwork, communication, and multitasking skills. I enjoy working with technology and learning new systems. I aim to start a career in IT support or any entry-level IT position where I can continue growing my technical abilities.</p>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education" class="education-section hidden">
+    <h2>Educational Background</h2>
+    <div class="education">
+      <div class="education-item">
+        <div class="education-degree">BS in Information Technology</div>
+        <div class="education-school">St. Vincent College of Cabuyao</div>
+        <div class="education-date">Jun 2024 - Present</div>
+        <div class="education-level">(College)</div>
+      </div>
+    <div class="education">
+      <div class="education-item">
+        <div class="education-degree">BS in Information Technology</div>
+        <div class="education-school">Pamantasan ng Cabuyao</div>
+        <div class="education-date">Jun 2022 - March 2024</div>
+        <div class="education-level">(College)</div>
+      </div>
+      <div class="education-item">
+        <div class="education-degree">General Academics Strand</div>
+        <div class="education-school">Southville 1 Intergrated National High School</div>
+        <div class="education-date">Jun 2020 - April 2022</div>
+        <div class="education-level">(Senior High School)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Employment History Section -->
+  <section id="employment" class="employment-section hidden">
+    <h2>Employment History</h2>
+    <div class="employment">
+      <div class="employment-item">
+        <div class="employment-details">
+          <div class="employment-job">Service Crew</div>
+          <div class="employment-company">McDonald's</div>
+          <div class="employment-date">February 2023 — Present</div>
+        </div>
+        <div class="employment-location">Calamba City</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="skills hidden">
+    <h2>My Skills</h2>
+    <div class="skills-container">
+      <div class="skill">
+        <span>IT Support & Helpdesk Operations</span>
+        <div class="bar"><div class="progress html"></div></div>
+      </div>
+      <div class="skill">
+        <span>Troubleshooting Hardware & Software Issues</span>
+        <div class="bar"><div class="progress css"></div></div>
+      </div>
+      <div class="skill">
+        <span>System Installation and Configuration</span>
+        <div class="bar"><div class="progress js"></div></div>
+      </div>
+      <div class="skill">
+        <span>Basic Graphic Design Photoshop, Canva, etc.</span>
+        <div class="bar"><div class="progress react"></div></div>
+      </div>
+      <div class="skill">
+        <span>Networking</span>
+        <div class="bar"><div class="progress design"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact hidden">
+    <h2>Contact Me</h2>
+    <p>Email: <a href="mailto:youremail@example.com">arviefrias09@gmail.com</a></p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Gerard Arvie Frias. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Scroll Animation Script -->
+  <script>
+    const hiddenElements = document.querySelectorAll(".hidden");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add("show");
+        }
+      });
+    }, { threshold: 0.2 });
+
+    hiddenElements.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

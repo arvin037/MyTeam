@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>My Team</title>
+<style>
+    *{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+    body{font-family:Segoe UI,sans-serif;color:#ecf0f1;min-height:100vh;display:flex;justify-content:center;align-items:flex-start;padding:2rem;position:relative;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;background:rgba(44,62,80,.7);z-index:1}
+    #bgVideo{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);min-width:100%;min-height:100%;z-index:0}
+    .container{max-width:900px;width:100%;position:relative;z-index:2}
+    .header{text-align:center;margin-bottom:3rem}
+    .header h1{font-size:2.5rem}
+    .team-container{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap}
+    .team-member{width:400px;background:rgba(44,62,80,.85);padding:2rem;border-radius:15px;text-align:center;transition:.4s;border:1px solid rgba(26,188,156,.4)}
+    .team-member:hover{transform:translateY(-8px)}
+    .member-photo{width:150px;height:150px;border-radius:50%;border:5px solid #1abc9c;object-fit:cover;margin-bottom:1rem}
+    .member-name{color:#1abc9c}
+    .member-position{color:#16a085;margin:.5rem 0 1rem}
+    .member-description{color:#ccc;margin-bottom:1rem}
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(26, 188, 156, 0.2);
+      border: 2px solid #1abc9c;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+      color: #1abc9c;
+    }
+
+    .social-icon img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+      filter: invert(1);
+    }
+
+    .social-icon:hover {
+      background: #1abc9c;
+      color: #0f3460;
+      transform: scale(1.1);
+    }
+    .view-profile-btn {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      background: #1abc9c;
+      color: #0f3460;
+      border: none;
+      border-radius: 25px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    .view-profile-btn:hover {
+      background: #16a085;
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(26, 188, 156, 0.4);
+    }
+    .hidden{opacity:0;transform:translateY(40px);transition:.8s}
+    .show{opacity:1;transform:translateY(0)}
+    #scrollBtn{position:fixed;right:20px;bottom:20px;width:55px;height:55px;border:none;border-radius:50%;background:#1abc9c;color:#fff;font-size:24px;display:none;cursor:pointer;z-index:9999}
+</style>
+</head>
+<body>
+<video autoplay muted loop id="bgVideo"><source src="res/background.mp4" type="video/mp4"></video>
+<div class="container">
+<div class="header hidden"><h1>My Team</h1><p>Discover More About Us.</p></div>
+<div class="team-container">
+<div class="team-member hidden">
+<img src="res/my-photo.png" class="member-photo">
+<h2 class="member-name">Hi I'm Arvin</h2>
+        <p class="member-position">IT Student | Creator</p>
+        <p class="member-description">Dedicated and adaptable individual with strong IT knowledge and practical skills in computer hardware, software, and office applications.</p>
+<div class="social-links">
+    <a class="social-icon" href="https://www.facebook.com/arvindavecalio"><img src="res/facebook.png"></a>
+    <a class="social-icon" href="https://www.instagram.com/rvindave"><img src="res/instagram.png"></a>
+    <a class="social-icon" href="https://www.tiktok.com/@rvindave"><img src="res/tiktok.png"></a>
+    <a class="social-icon" href="mailto:arvindavecalio37@gmail.com"><img src="res/email.png"></a>
+</div>
+<a class="view-profile-btn" href="Portfolio.html">View Profile</a>
+</div>
+<div class="team-member hidden">
+<img src="res/Member2.jpg" class="member-photo">
+    <h2 class="member-name">Hi I'm Gerard</h2>
+    <p class="member-position">IT Student | Developer</p>
+    <p class="member-description">Motivated and reliable individual with skills in web development, design, and teamwork.</p>
+<div class="social-links">
+    <a class="social-icon" href="https://www.facebook.com/arvie.frias"><img src="res/facebook.png"></a>
+    <a class="social-icon" href="https://www.instagram.com/itz_arvss/?hl=en"><img src="res/instagram.png"></a>
+    <a class="social-icon" href="https://www.tiktok.com/@softvieon"><img src="res/tiktok.png"></a>
+    <a class="social-icon" href="mailto:arviefrias09@gmail.com"><img src="res/email.png"></a>
+</div>
+<a class="view-profile-btn" href="Portfolio2.html">View Profile</a>
+</div>
+</div>
+</div>
+<button id="scrollBtn">↓</button>
+<script>
+document.querySelectorAll('.hidden').forEach(el=>new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('show')),{threshold:.2}).observe(el));
+const b=document.getElementById('scrollBtn');
+function u(){b.style.display=document.documentElement.scrollHeight>innerHeight?'block':'none';b.textContent=innerHeight+scrollY>=document.body.scrollHeight-10?'↑':'↓';}
+addEventListener('scroll',u);addEventListener('resize',u);u();
+b.onclick=()=>scrollTo({top:b.textContent==='↓'?document.body.scrollHeight:0,behavior:'smooth'});
+</script>
+</body></html>
